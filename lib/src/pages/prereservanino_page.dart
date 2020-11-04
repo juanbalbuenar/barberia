@@ -1,3 +1,4 @@
+import 'package:barberia/src/utils/colofondo_utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:barberia/src/widgets/widgets.dart';
@@ -15,8 +16,8 @@ class PreReservaNinoPage extends StatelessWidget {
           child: Column(
             children: [
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'reserva'),
-                child: preReserva(context, AssetImage('assets/prereservaninnormal.png'), 'Reserva Normal', AssetImage('assets/icon_prereservaninnormal.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Caballeros y gozar de nuestros servicios sin esperas.', Colors.black)
+                onTap: () => Navigator.pushNamed(context, 'reservabasica', arguments: ColorFondo(Color.fromRGBO(236, 250, 255, 1.0), 'assets/bannerreservacab.png', [Color.fromRGBO(77, 156, 208, 1.0), Color.fromRGBO(236, 250, 255, 1.0)], Color.fromRGBO(54, 124, 146, 1.0))),
+                child: preReserva(context, AssetImage('assets/prereservaninnormal.png'), 'Reserva Basica', AssetImage('assets/icon_prereservaninnormal.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Caballeros y gozar de nuestros servicios sin esperas.', Colors.black)
                 ),
               SizedBox(height: 20.0,),
               GestureDetector(

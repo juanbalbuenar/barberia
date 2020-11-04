@@ -9,6 +9,7 @@ import 'package:barberia/src/pages/prereserva_page.dart';
 import 'package:barberia/src/pages/prereservanino_page.dart';
 import 'package:barberia/src/pages/reservabasica_page.dart';
 import 'package:barberia/src/pages/prereservadama_page.dart';
+import 'package:barberia/src/pages/reservadelivery_page.dart';
 
 
 final Map<String, Widget Function(BuildContext)> appRoutes = {
@@ -22,6 +23,7 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'prereservadama' : (BuildContext context) => PreReservaDamaPage(),
   'prereservanino' : (BuildContext context) => PreReservaNinoPage(),
   'reservabasica'  : (BuildContext context) => ReservaBasicaPage(),
+  'reservadelivery': (BuildContext context) => ReservaDeliveryPage(),
 
 
 };

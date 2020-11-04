@@ -15,8 +15,14 @@ class PreReservaPage extends StatelessWidget {
           child: Column(
             children: [
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'reservabasica',arguments: ColorFondo(Colors.black)),
-                child: preReserva(context, AssetImage('assets/imgreservanormal.png'), 'Reserva Normal', AssetImage('assets/iconreservanormalcab.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Caballeros y gozar de nuestros servicios sin esperas.', Colors.black)
+                onTap: () => Navigator.pushNamed(context, 'reservabasica',arguments: 
+                  ColorFondo(Colors.black, 
+                  'assets/bannerreservacab.png', 
+                  [Colors.brown[300], Colors.black] ,
+                  Colors.brown[400]
+                  ) 
+                ),
+                child: preReserva(context, AssetImage('assets/imgreservanormal.png'), 'Reserva Basica', AssetImage('assets/iconreservanormalcab.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Caballeros y gozar de nuestros servicios sin esperas.', Colors.black)
                 ),
               SizedBox(height: 20.0,),
               GestureDetector(

@@ -9,13 +9,13 @@ import 'package:barberia/src/bloc/provider.dart';
 import 'package:barberia/src/bloc/reserva_basica_bloc.dart';
 import 'package:barberia/src/utils/colofondo_utils.dart';
 
-class ReservaBasicaPage extends StatefulWidget {
+class ReservaDeliveryPage extends StatefulWidget {
   
   @override
-  _ReservaBasicaPageState createState() => _ReservaBasicaPageState();
+  _ReservaDeliveryPageState createState() => _ReservaDeliveryPageState();
 }
 
-class _ReservaBasicaPageState extends State<ReservaBasicaPage> {
+class _ReservaDeliveryPageState extends State<ReservaDeliveryPage> {
   TextEditingController reservaTipo = new TextEditingController();
   TextEditingController dateCtl = TextEditingController();
   TextEditingController timeCtl = TextEditingController();
@@ -505,4 +505,3 @@ class _ReservaBasicaPageState extends State<ReservaBasicaPage> {
   }
 
 }
-

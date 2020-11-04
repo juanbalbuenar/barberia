@@ -1,15 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import "package:latlong/latlong.dart" as latLng;
+import 'dart:async';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:barberia/src/widgets/widgets.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class InicioPage extends StatelessWidget {
+class InicioPage extends StatefulWidget {
+  @override
+  _InicioPageState createState() => _InicioPageState();
+}
+
+class _InicioPageState extends State<InicioPage> {
+  Completer<GoogleMapController> _controller = Completer();
+  List<Marker> _markers = <Marker>[];
+
+  void _location() async{
+    final status = await Permission.location.request();
+    print(status);
+  }
+
+  @override
+  void initState() {
+    _location();
+    super.initState();
+  }
+
+  static final CameraPosition _cameraPosition = CameraPosition(
+    target: LatLng(-12.162187,-76.990081),
+    zoom: 14.4746,
+  );
+
+  
 
   
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    _markers.add(
+      Marker(
+        markerId: MarkerId('Barberia'),
+        position: LatLng(-12.162187,-76.990081),
+
+      )
+    );
     
     return Scaffold(
       appBar: AppBar(
@@ -117,6 +152,7 @@ class InicioPage extends StatelessWidget {
                   ],
                 );
   }
+
   Widget sucursal(context) {
     final String someText = 
                             "Contamos con 2 locales:\n\n"
@@ -146,48 +182,29 @@ class InicioPage extends StatelessWidget {
                   ],
                 );
   }
+
   Widget mapa(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * 0.90,
       height: 200.0,
-      child: FlutterMap(
-        options: MapOptions(
-          center: latLng.LatLng(-12.162187,-76.990081),
-          zoom: 18, 
-        ),
-        layers: [
-          _crearMapa(),
-          MarkerLayerOptions(
-        markers: [
-          new Marker(
-            width: 80.0,
-            height: 80.0,
-            point: latLng.LatLng(-12.162187,-76.990081),
-            builder: (ctx) =>
-            new Container(
-              child: Icon(
-             Icons.location_on, 
-             size: 60.0,
-             color: Theme.of(context).primaryColor,),
-            ),
-          ),
-        ],
-       ),
-      ]
-    ) 
+      child: _crearMapa() 
    );
   }
+
   _crearMapa() {
-   return TileLayerOptions(
-      urlTemplate: 'https://api.mapbox.com/v4/'
-      '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
-      additionalOptions: {
-        'accessToken': 'pk.eyJ1Ijoia2xlcml0aCIsImEiOiJjanY2MjF4NGIwMG9nM3lvMnN3ZDM1dWE5In0.0SfmUpbW6UFj7ZnRdRyNAw',
-        'id': 'mapbox.streets'
-      }
+   return GoogleMap(
+     initialCameraPosition: _cameraPosition,
+     markers: Set<Marker>.of(_markers),
+     onMapCreated: (GoogleMapController controller) {
+       _controller.complete(controller);
+      },
     );
+    
  }
+ 
+  
+
   Widget iconos() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -219,5 +236,4 @@ class InicioPage extends StatelessWidget {
       ],
     );
   }
-
 }

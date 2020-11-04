@@ -15,8 +15,14 @@ class PreReservaDamaPage extends StatelessWidget {
           child: Column(
             children: [
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'reservabasica', arguments: ColorFondo(Colors.blue) ),
-                child: preReserva(context, AssetImage('assets/prereservadamnormal.png'), 'Reserva Normal', AssetImage('assets/icon_normal_prereservadam.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Cabellos y gozar de nuestros servicios sin esperas.', Colors.black)
+                onTap: () => Navigator.pushNamed(context, 'reservabasica', arguments: 
+                  ColorFondo(Color.fromRGBO(230, 232, 255, 1.0), 
+                  'assets/bannerreservadam.png', 
+                  [Color.fromRGBO(62, 66, 102, 1.0), Color.fromRGBO(230, 232, 255, 1.0)],
+                  Colors.indigo[300]
+                  ) 
+                ),
+                child: preReserva(context, AssetImage('assets/prereservadamnormal.png'), 'Reserva Basica', AssetImage('assets/icon_normal_prereservadam.png'), 'Podrás reservar un día y hora para poder visitar uno de nuestro locales D\'Cabellos y gozar de nuestros servicios sin esperas.', Colors.black)
                 ),
               SizedBox(height: 20.0,),
               GestureDetector(

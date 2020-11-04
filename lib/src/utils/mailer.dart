@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
 import 'package:barberia/src/utils/credentials.dart';
 
-sendMail() async {
+sendMail(String nombre, String apellido, String movil, String tiporeserva,String sucursal, String fecha, String hora ) async {
   String username = email;
   String password = contrasena;
 
@@ -21,9 +20,9 @@ sendMail() async {
     ..recipients.add('lokato321@gmail.com')
     //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
     //..bccRecipients.add(Address('bccAddress@example.com'))
-    ..subject = 'Dart Mailer library :: 😀 :: ${DateTime.now()}'
-    ..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    ..html = "<h1>Shawon</h1>\n<p>Hey! Here's some HTML content</p>";
+    ..subject = 'Reserva DCaballeros ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}'
+    ..text = 'Datos de la reserva:\n\nNombre y apellido: $nombre $apellido\nCelular: $movil\nTipo de reserva: $tiporeserva\nSucursal: $sucursal\nFecha: $fecha\nHora: $hora';
+    //..html = "<h1>Shawon</h1>\n<p>Hey! Here's some HTML content</p>";
 
     try {
     final sendReport = await send(message, smtpServer);

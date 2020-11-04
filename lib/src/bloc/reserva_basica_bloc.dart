@@ -21,7 +21,7 @@ class ReservaBasicaBloc with Validators {
  Stream<String> get fechaStream => _fechaController.stream;
  Stream<String> get horaStream => _horaController.stream;
 
- Stream<bool> get formValidStream => Rx.combineLatest6(nombreStream, apellidoStream, celularStream, _sucursalController, fechaStream, horaStream, (a, b, c, d, e, f) => true);
+ Stream<bool> get formValidStream => Rx.combineLatest3(nombreStream, apellidoStream, celularStream, (n, a, c) => true);
 
  //Insertar valores al Stream
   Function(String) get changeNombre   => _nombreController.sink.add;
@@ -39,7 +39,7 @@ class ReservaBasicaBloc with Validators {
   String get fecha    => _fechaController.value;
   String get hora     => _horaController.value;
 
-  void formularioCorrecto(String name, String lastname, String phone, String local, String date, String hour) {
+  formularioCorrecto(String name, String lastname, String phone, String local, String date, String hour) {
 
     name = nombre;
     lastname = apellido;
